@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { Alert, View, TextInput, TouchableOpacity, Text } from 'react-native';
+import { createProfile } from '../services/profile';
 
-const Profile = ({navigation}) => {
+import { styles } from '../utils/style';
+
+const Profile = ({ navigation }) => {
 
     const [address, setAddress] = useState("");
-    const [error, setError] = useState("");
 
-    async function PerformRequest() {
-        try {
-            console.info("User signed with success");
-        } catch(error) {
-            Alert.alert("An error occured.")
-            console.error("erro: ", error);
+    async function PerformRequest(){
+        try{
+            await createProfile(address);
+            navigation.navigate("Home");
+        }catch(error){
+            if (error.response.status === 400){
+                Alert.alert("Please inform your address");
+            }
+            else{
+                Alert.alert("Unespected error");
+            }
+            return;
         }
     }
 
@@ -20,24 +28,13 @@ const Profile = ({navigation}) => {
             <TextInput label="Address"
             placeholder="Address"
             onChangeText={(address) => setAddress(address)}
-            onChange={() => setError('')}
             />
 
-            <TouchableOpacity onPress={PerformRequest()}>
-                <Text>
-                    Submit
-                </Text>
+            <TouchableOpacity style={styles.button} onPress={() => PerformRequest()}>
+                <Text style={styles.linkText}>Submit</Text>
             </TouchableOpacity>
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-})
 
 export default Profile;

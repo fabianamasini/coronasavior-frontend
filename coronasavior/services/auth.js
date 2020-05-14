@@ -1,11 +1,11 @@
-import base from "./base";
+import base, { internal } from "./base";
 
 export async function getAuthorizationToken(username, password){
     const payload = {
         "username": username,
         "password": password
     };
-    return await base.post("/api/token/", payload);
+    return await internal.post("/api/token/", payload);
 }
 
 export async function refreshToken(){

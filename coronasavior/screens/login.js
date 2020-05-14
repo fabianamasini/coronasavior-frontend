@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { AsyncStorage, Alert, View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { getAuthorizationToken } from '../services/auth';
 import { getProfile } from '../services/profile';
+import { styles } from '../utils/style';
 
 const Login = ({ navigation }) => {
 
@@ -29,52 +30,46 @@ const Login = ({ navigation }) => {
             }
             return;
         }
-
         try{
             const response = await getProfile();
             if(response.data.count == 0){
                 navigation.navigate("Profile");
             }
             else{
-                navigation.navigate("SignUp");
+                navigation.navigate("Home");
             }
         }catch (error) {
-            //console.log(error);
             console.log(error.response.request);
         }
     }
 
     return (
         <View style={styles.container}>
-            <TextInput label="Username"
+            <TextInput style={styles.textInput} 
+            label="Username"
             placeholder="Username"
             onChangeText={(username) => setUsername(username)}
             onChange={() => setError('')}
             />
 
-            <TextInput label="Password"
+            <TextInput style={styles.textInput}
+            label="Password"
             placeholder="Password"
             secureTextEntry={true}
             onChangeText={(password) => setPassword(password)}
             onChange={() => setError('')}
             />
 
-            <TouchableOpacity onPress={() => PerformRequest()}>
-                <Text>Login</Text>
+            <TouchableOpacity style={styles.button}
+            onPress={() => PerformRequest()}>
+                <Text style={styles.whiteText}>Login</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+                <Text style={styles.linkText}>Doesn't have an account? Sign up here</Text>
             </TouchableOpacity>
         </View>
     )
 }
 
 export default Login;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    textInput: {
-        padding: 10
-    }
-})

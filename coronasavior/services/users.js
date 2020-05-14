@@ -1,6 +1,6 @@
-import base from './base.js';
+import base, { internal } from "./base";
 
-async function registerUser(username, first_name, last_name, email, password){
+export async function registerUser(username, first_name, last_name, email, password){
     const payload = {
         "username": username,
         "first_name": first_name,
@@ -8,12 +8,12 @@ async function registerUser(username, first_name, last_name, email, password){
         "email": email,
         "password": password
     };
-    return await base.post("/users/", payload);
+    return await internal.post("/users/", payload);
 }
 
-async function getLoggedUser(){
+export async function getLoggedUser(){
     base.defaults.headers = {
         "Authorization": "Bearer " + "token"
-    }
+    };
     return await base.post("/users/", payload);
 }

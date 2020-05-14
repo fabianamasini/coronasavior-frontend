@@ -1,28 +1,37 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Login from './screens/login.js';
-import SignUp from './screens/signup.js';
-import Profile from './screens/profile.js';
+import { lightGreen } from './utils/constants'
+
+import Login from './screens/login';
+import SignUp from './screens/signup';
+import Profile from './screens/profile';
+import Home from './screens/home';
 
 const Routes = createAppContainer(
     createStackNavigator({
         Login : {
             screen: Login,
             navigationOptions: {
-                headerShown: false
+                headerShown: true
             }
         },
         SignUp : {
             screen: SignUp,
             navigationOptions: {
-                headerShown: false
+                headerShown: true
             }
         },
         Profile : {
             screen: Profile,
             navigationOptions: {
-                headerShown: false
+                headerShown: true
+            }
+        },
+        Home : {
+            screen: Home,
+            navigationOptions: {
+                headerShown: true
             }
         }
     }, {
@@ -30,7 +39,7 @@ const Routes = createAppContainer(
             headerTintColor: '#fff',
             headerBackTitleVisible: false,
             headerStyle: {
-                backgroundColor: '#7eaddd',
+                backgroundColor: lightGreen,
             }
         }
     })
