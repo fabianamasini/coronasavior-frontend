@@ -13,25 +13,29 @@ const Routes = createAppContainer(
         Login : {
             screen: Login,
             navigationOptions: {
-                headerShown: true
+                headerShown: true,
+                headerLeft: () => null
             }
         },
         SignUp : {
             screen: SignUp,
             navigationOptions: {
-                headerShown: true
+                headerShown: true,
+                headerLeft: () => null
             }
         },
         Profile : {
             screen: Profile,
             navigationOptions: {
-                headerShown: true
+                headerShown: true,
+                headerLeft: () => null
             }
         },
         Home : {
             screen: Home,
             navigationOptions: {
-                headerShown: true
+                headerShown: true,
+                headerLeft: () => null
             }
         }
     }, {

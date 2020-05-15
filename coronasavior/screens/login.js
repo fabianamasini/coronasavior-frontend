@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { AsyncStorage, Alert, View, TextInput, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { AsyncStorage, Alert, View, TextInput, TouchableOpacity, Text, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { getAuthorizationToken } from '../services/auth';
 import { getProfile } from '../services/profile';
 import { styles } from '../utils/style';
+import FloatingLabelInput from '../components/FloatingLabelInput';
 
 const Login = ({ navigation }) => {
 
@@ -44,31 +45,29 @@ const Login = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.container}>
-            <TextInput style={styles.textInput} 
-            label="Username"
-            placeholder="Username"
-            onChangeText={(username) => setUsername(username)}
-            onChange={() => setError('')}
-            />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <View style={styles.container}>
+                <FloatingLabelInput
+                    label='Username'
+                    action={(username) => setUsername(username)}
+                    value={username}
+                />
+                <FloatingLabelInput
+                    label='Password'
+                    action={(password) => setPassword(password)}
+                    value={password}
+                    security={true}
+                />
+                <TouchableOpacity style={styles.button}
+                onPress={() => PerformRequest()}>
+                    <Text style={styles.whiteText}>Login</Text>
+                </TouchableOpacity>
 
-            <TextInput style={styles.textInput}
-            label="Password"
-            placeholder="Password"
-            secureTextEntry={true}
-            onChangeText={(password) => setPassword(password)}
-            onChange={() => setError('')}
-            />
-
-            <TouchableOpacity style={styles.button}
-            onPress={() => PerformRequest()}>
-                <Text style={styles.whiteText}>Login</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-                <Text style={styles.linkText}>Doesn't have an account? Sign up here</Text>
-            </TouchableOpacity>
-        </View>
+                <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
+                    <Text style={styles.linkText}>Doesn't have an account? Sign up here</Text>
+                </TouchableOpacity>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 

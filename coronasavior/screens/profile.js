@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Alert, View, TextInput, TouchableOpacity, Text } from 'react-native';
+import { Alert, View, TouchableOpacity, Text } from 'react-native';
 import { createProfile } from '../services/profile';
+import FloatingLabelInput from '../components/FloatingLabelInput';
 
 import { styles } from '../utils/style';
 
@@ -25,9 +26,10 @@ const Profile = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <TextInput label="Address"
-            placeholder="Address"
-            onChangeText={(address) => setAddress(address)}
+            <FloatingLabelInput 
+                label="Address"
+                action={(address) => setAddress(address)}
+                value={address} //:D:D:D:D
             />
 
             <TouchableOpacity style={styles.button} onPress={() => PerformRequest()}>

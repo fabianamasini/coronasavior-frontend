@@ -29,5 +29,24 @@ export const styles = StyleSheet.create({
   },
   linkText: {
       color: darkGreen,
+  },
+  h1: {
+    color: mediumGreen,
+    fontSize: 30,
+    fontWeight: 'bold'
+  },
+  navbar:{
+    flex: 0.15,
+    backgroundColor: lightGreen,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  scrollView:{
+    flex:1
+  },
+  icon:{
+    width: 40,
+    height: 40,
   }
 })
