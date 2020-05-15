@@ -7,6 +7,7 @@ import Login from '../screens/login';
 import SignUp from '../screens/signup';
 import Profile from '../screens/profile';
 import Home from '../screens/home';
+import Quiz from '../screens/quiz';
 
 const Stack = createStackNavigator()
 
@@ -49,6 +50,14 @@ function stackNav() {
     <Stack.Screen
         name="Profile"
         component={Profile}
+        options={{
+            headerShown: true,
+            headerLeft: () => null
+        }}
+    />
+    <Stack.Screen
+        name="Quiz"
+        component={Quiz}
         options={{
             headerShown: true,
             headerLeft: () => null

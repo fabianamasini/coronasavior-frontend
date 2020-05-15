@@ -76,7 +76,8 @@ const Home = ({ navigation }) => {
                     />
                     <Text style={styles.iconDescription}>Home</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.navbarIcons}>
+                <TouchableOpacity style={styles.navbarIcons}
+                onPress={() => navigation.navigate("Quiz")}>
                     <Image
                         style={styles.icon}
                         source={require('../assets/quiz.png')}

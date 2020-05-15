@@ -89,5 +89,11 @@ export const styles = StyleSheet.create({
   iconDescription: {
     fontSize: 10,
     color: 'white'
+  },
+  questionTitle: {
+    fontSize: 20,
+    padding: 30,
+    borderBottomWidth: 1
   }
 })
+
