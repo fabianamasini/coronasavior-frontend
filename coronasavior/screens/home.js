@@ -23,8 +23,8 @@ const Home = ({ navigation }) => {
                     <Text style={styles.h1}>Welcome to Coronasavior! :D</Text>
                     <Text style={styles.paragraph}>We are very happy for having you here.</Text>
                     <Text style={styles.paragraph}>In our navigation bar below, you will be able to access our Quiz and our Ranking.</Text>
-                    <Text style={styles.paragraph}>The Quiz offers you several questions around the Corona virus, forms of prevention, dos and don'ts, social distancing and more.</Text>
-                    <Text style={styles.paragraph}>For each right answer, you will earn points. The more points you earn, the more you move up on our global ranking! This way, you can compete with users from any place and get informed around the pandemic subject.</Text>
+                    <Text style={styles.paragraph}>The Quiz offers you several questions around the Corona virus subject, forms of prevention, dos and don'ts, social distancing and more.</Text>
+                    <Text style={styles.paragraph}>For each right answer, you will earn points. The more points you earn, the more you move up on our global ranking! This way, you can compete with users from anywhere and get informed around the pandemic subject.</Text>
                     <Text style={styles.h1}>Prevention tips</Text>
                     <Text style={styles.h2}>1. Wash your hands frequently</Text>
                     <Text style={styles.paragraph}>You should frequently wash your hands for 20 seconds with water and soap. If it's not possible, then sanizite it with alcohol in gel.</Text>
