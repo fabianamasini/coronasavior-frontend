@@ -47,14 +47,14 @@ export const styles = StyleSheet.create({
     backgroundColor: lightGreen,
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   scrollView:{
     flex:1
   },
   icon:{
-    width: 40,
-    height: 40,
+    width: 35,
+    height: 35
   },
   textContainer: {
     paddingTop: windowHeight/20,
@@ -82,5 +82,12 @@ export const styles = StyleSheet.create({
   },
   iconCredits:{
     fontSize: 10
+  },
+  navbarIcons: {
+    alignItems: 'center'
+  },
+  iconDescription: {
+    fontSize: 10,
+    color: 'white'
   }
 })

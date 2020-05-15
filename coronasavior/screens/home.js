@@ -62,23 +62,26 @@ const Home = ({ navigation }) => {
                 </View>
             </ScrollView>
             <View style={styles.navbar}>
-                <TouchableOpacity>
+                <TouchableOpacity style={styles.navbarIcons}>
                     <Image
                         style={styles.icon}
-                        source={require('../assets/business.png')}
+                        source={require('../assets/medal.png')}
                     />
+                    <Text style={styles.iconDescription}>Ranking</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity style={styles.navbarIcons}>
                     <Image
                         style={styles.icon}
-                        source={require('../assets/home.png')}
+                        source={require('../assets/home_green.png')}
                     />
+                    <Text style={styles.iconDescription}>Home</Text>
                 </TouchableOpacity>
-                <TouchableOpacity>
+                <TouchableOpacity style={styles.navbarIcons}>
                     <Image
                         style={styles.icon}
-                        source={require('../assets/sheet.png')}
+                        source={require('../assets/quiz.png')}
                     />
+                    <Text style={styles.iconDescription}>Quiz</Text>
                 </TouchableOpacity>
             </View>
             
