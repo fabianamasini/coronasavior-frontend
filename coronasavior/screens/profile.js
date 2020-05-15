@@ -29,7 +29,7 @@ const Profile = ({ navigation }) => {
             <FloatingLabelInput 
                 label="Address"
                 action={(address) => setAddress(address)}
-                value={address} //:D:D:D:D
+                value={address}
             />
 
             <TouchableOpacity style={styles.button} onPress={() => PerformRequest()}>

@@ -1,52 +1,21 @@
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import React from 'react';
+import { createStackNavigator }  from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
 
-import { lightGreen } from './utils/constants'
+import stackNav from './routes/stackNavigation'
+import drawerNav from './routes/drawerNavigation'
 
-import Login from './screens/login';
-import SignUp from './screens/signup';
-import Profile from './screens/profile';
-import Home from './screens/home';
+const Stack = createStackNavigator()
 
-const Routes = createAppContainer(
-    createStackNavigator({
-        Login : {
-            screen: Login,
-            navigationOptions: {
-                headerShown: true,
-                headerLeft: () => null
-            }
-        },
-        SignUp : {
-            screen: SignUp,
-            navigationOptions: {
-                headerShown: true,
-                headerLeft: () => null
-            }
-        },
-        Profile : {
-            screen: Profile,
-            navigationOptions: {
-                headerShown: true,
-                headerLeft: () => null
-            }
-        },
-        Home : {
-            screen: Home,
-            navigationOptions: {
-                headerShown: true,
-                headerLeft: () => null
-            }
-        }
-    }, {
-        defaultNavigationOptions: {
-            headerTintColor: '#fff',
-            headerBackTitleVisible: false,
-            headerStyle: {
-                backgroundColor: lightGreen,
-            }
-        }
-    })
-);
+function Routes() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name='Stack' component={stackNav}/>
+        <Stack.Screen name='Drawer' component={drawerNav} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
 
 export default Routes;
