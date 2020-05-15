@@ -71,5 +71,16 @@ export const styles = StyleSheet.create({
     color: lightGreen,
     fontWeight: 'bold',
     marginTop: 5
+  },
+  image: {
+    width: 100,
+    height: 100,    
+  },
+  imageView: {
+    alignItems: 'center',
+    margin: 10
+  },
+  iconCredits:{
+    fontSize: 10
   }
 })

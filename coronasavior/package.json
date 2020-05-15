@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@material-ui/icons": "^4.9.1",
     "@react-native-community/masked-view": "^0.1.10",
     "axios": "^0.19.2",
     "expo": "~37.0.3",

@@ -28,31 +28,56 @@ const Home = ({ navigation }) => {
                     <Text style={styles.h1}>Prevention tips</Text>
                     <Text style={styles.h2}>1. Wash your hands frequently</Text>
                     <Text style={styles.paragraph}>You should frequently wash your hands for 20 seconds with water and soap. If it's not possible, then sanizite it with alcohol in gel.</Text>
+                    <View style={styles.imageView}>
+                        <Image
+                            style={styles.image}
+                            source={require('../assets/wash_hands.png')}
+                        />
+                    </View>
                     <Text style={styles.h2}>2. Don't touch your eyes, mouth and nose!</Text>
                     <Text style={styles.paragraph}>If your hands are not clean, don't touch your eyes, mouth and nose. The new corona virus enters the body through the upper airways - nose and throat, for example.</Text>
+                    <View style={styles.imageView}>
+                        <Image
+                            style={styles.image}
+                            source={require('../assets/saude.png')}
+                        />
+                    </View>
                     <Text style={styles.h2}>3. Stay home!</Text>
                     <Text style={styles.paragraph}>If you have the opportunity, please stay home. As the virus is highly contagious, decreasing the number of people on the streets and avoiding crowds is crucial to reduce the spread of the disease.</Text>
+                    <View style={styles.imageView}>
+                        <Image
+                            style={styles.image}
+                            source={require('../assets/stayhome.png')}
+                        />
+                    </View>
                     <Text style={styles.h2}>4. Social distancing</Text>
                     <Text style={styles.paragraph}>If you are in a situation that does not allow you to stay home, practice social distancing. You should keep at least 1m of distance of other people around you.</Text>
+                    <View style={styles.imageView}>
+                        <Image
+                            style={styles.image}
+                            source={require('../assets/distance.png')}
+                        />
+                    </View>
+                    <Text style={styles.iconCredits}>Icons by Freepik and iconixar on www.flaticon.com</Text>
                 </View>
             </ScrollView>
             <View style={styles.navbar}>
                 <TouchableOpacity>
                     <Image
                         style={styles.icon}
-                        source={require('../assets/icon.png')}
+                        source={require('../assets/business.png')}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <Image
                         style={styles.icon}
-                        source={require('../assets/icon.png')}
+                        source={require('../assets/home.png')}
                     />
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <Image
                         style={styles.icon}
-                        source={require('../assets/icon.png')}
+                        source={require('../assets/sheet.png')}
                     />
                 </TouchableOpacity>
             </View>
