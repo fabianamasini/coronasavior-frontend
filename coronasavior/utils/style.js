@@ -1,5 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import { mediumGreen, darkGreen, lightGreen } from './constants.js'
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 export const styles = StyleSheet.create({
   container: {
@@ -33,10 +36,14 @@ export const styles = StyleSheet.create({
   h1: {
     color: mediumGreen,
     fontSize: 30,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    justifyContent: 'center',
+    textAlign: 'center',
+    marginBottom: 10,
+    marginTop: 5
   },
   navbar:{
-    flex: 0.15,
+    flex: 0.10,
     backgroundColor: lightGreen,
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -48,5 +55,21 @@ export const styles = StyleSheet.create({
   icon:{
     width: 40,
     height: 40,
+  },
+  textContainer: {
+    paddingTop: windowHeight/20,
+    paddingLeft: windowWidth/10,
+    paddingRight: windowWidth/10,
+    paddingBottom: windowHeight/20
+  },
+  paragraph: {
+    fontSize: 17,
+    textAlign: 'justify'
+  },
+  h2: {
+    fontSize: 20,
+    color: lightGreen,
+    fontWeight: 'bold',
+    marginTop: 5
   }
 })
