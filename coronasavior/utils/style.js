@@ -91,9 +91,12 @@ export const styles = StyleSheet.create({
     color: 'white'
   },
   questionTitle: {
-    fontSize: 20,
+    fontSize: 20
+  },
+  questionTitleContainer: {
     padding: 30,
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    borderBottomColor: 'black'
   }
 })
 

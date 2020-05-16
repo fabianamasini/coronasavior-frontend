@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Alert, FlatList, TouchableOpacity, Text } from 'react-native';
+import { View, Alert, FlatList, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { styles } from '../utils/style.js';
 import { getQuestions } from '../services/questions.js'
 
@@ -9,12 +9,8 @@ const Quiz = ({navigation}) => {
 
     useEffect(() => {
         const readQuestions = async() => {
-            /*const questionsHTTP = await fetch(getQuestions()).catch(error => {console.log('found error', error)});
-            const questionsJson = await questionsHTTP.json();
-            setQuestions(questionsJson) */
-            const questionsHTTP = await fetch("http://coronasavior.herokuapp.com/questions/");
-            const questionsJson = await questionsHTTP.json();
-            setQuestions(questionsJson);
+            const questionsJson = await getQuestions();
+            setQuestions(questionsJson.data.results);
         }
         readQuestions();
     }, [])
@@ -27,34 +23,18 @@ const Quiz = ({navigation}) => {
         <View>
             <FlatList
             data = {questions}
-            keyExtractor = {(questions) => questions.title}
-            renderItem={({questions}) => {
+            keyExtractor = {(item) => item.title}
+            renderItem={({item}) => {
                 return(
-                    <TouchableOpacity onPress={() => goToNextScreen()}>
-                         <Text style={styles.questionTitle}>{questions.key}</Text>
+                    <TouchableOpacity 
+                        onPress={() => goToNextScreen()} 
+                        style={styles.questionTitleContainer}>
+                         <Text style={styles.questionTitle}>{item.title}</Text>
                     </TouchableOpacity>
                   )
             } 
         }
         />
-        {/*<FlatList
-          data={[
-            {key: 'Pergunta 1'},
-            {key: 'Pergunta 2'},
-            {key: 'Pergunta 3'},
-            {key: 'Pergunta 4'},
-            {key: 'Pergunta 5'},
-            {key: 'Pergunta 6'},
-          ]}
-          renderItem={({item}) => {
-              return(
-                <TouchableOpacity onPress={() => goToNextScreen()}>
-                     <Text style={styles.questionTitle}>{item.key}</Text>
-                </TouchableOpacity>
-              )
-            }
-          }
-        />*/}
       </View>
     )
 }
