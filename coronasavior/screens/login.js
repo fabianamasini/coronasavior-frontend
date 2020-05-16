@@ -50,20 +50,23 @@ const Login = ({ navigation }) => {
                     label='Username'
                     action={(username) => setUsername(username)}
                     value={username}
+                    accessibility="Username field"
                 />
                 <FloatingLabelInput
                     label='Password'
                     action={(password) => setPassword(password)}
                     value={password}
                     security={true}
+                    accessibility="Password field"
                 />
+
                 <TouchableOpacity style={styles.button}
                 onPress={() => PerformRequest()}>
                     <Text style={styles.whiteText}>Login</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-                    <Text style={styles.linkText}>Doesn't have an account? Sign up here</Text>
+                    <Text style={styles.linkText}>Don't have an account? Sign up here</Text>
                 </TouchableOpacity>
             </View>
         </TouchableWithoutFeedback>

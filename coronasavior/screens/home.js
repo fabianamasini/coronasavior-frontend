@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AsyncStorage,Image, Alert, View, TextInput, StyleSheet, TouchableOpacity, Text, ScrollView } from 'react-native';
+import { AsyncStorage,Image, Alert, View, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { styles } from '../utils/style.js';
 
 const Home = ({ navigation }) => {
@@ -84,13 +84,15 @@ const Home = ({ navigation }) => {
                     <Text style={styles.iconDescription}>Quiz</Text>
                 </TouchableOpacity>
             </View>
+
+            <TouchableOpacity onPress={() => Logout()} >
+            <Text>Logout</Text>
+        </TouchableOpacity>
             
         </View>
         
 
-        /*<TouchableOpacity onPress={() => Logout()} >
-            <Text>Logout</Text>
-        </TouchableOpacity>*/
+       
     )
 }
 
