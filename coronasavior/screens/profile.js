@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Alert, View, TouchableOpacity, Text } from 'react-native';
+import { Alert, View, TouchableOpacity, Text, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import { createProfile } from '../services/profile';
 import FloatingLabelInput from '../components/FloatingLabelInput';
 
@@ -25,17 +25,19 @@ const Profile = ({ navigation }) => {
     }
 
     return (
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-            <FloatingLabelInput 
-                label="Address"
-                action={(address) => setAddress(address)}
-                value={address}
-            />
+                <FloatingLabelInput 
+                    label="Address"
+                    action={(address) => setAddress(address)}
+                    value={address}
+                />
 
-            <TouchableOpacity style={styles.button} onPress={() => PerformRequest()}>
-                <Text style={styles.linkText}>Submit</Text>
-            </TouchableOpacity>
-        </View>
+                <TouchableOpacity style={styles.button} onPress={() => PerformRequest()}>
+                    <Text style={styles.whiteText}>Submit</Text>
+                </TouchableOpacity>
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 

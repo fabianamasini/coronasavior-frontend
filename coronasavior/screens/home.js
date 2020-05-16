@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AsyncStorage,Image, Alert, View, TextInput, StyleSheet, TouchableOpacity, Text, ScrollView } from 'react-native';
+import { AsyncStorage,Image, Alert, View, TouchableOpacity, Text, ScrollView } from 'react-native';
 import { styles } from '../utils/style.js';
 
 const Home = ({ navigation }) => {
@@ -60,6 +60,10 @@ const Home = ({ navigation }) => {
                     </View>
                     <Text style={styles.iconCredits}>Icons by Freepik and iconixar on www.flaticon.com</Text>
                 </View>
+                <TouchableOpacity onPress={() => Logout()} 
+                    style={styles.button}>
+                    <Text style={styles.whiteText}>Logout</Text>
+                </TouchableOpacity>
             </ScrollView>
             <View style={styles.navbar}>
                 <TouchableOpacity style={styles.navbarIcons}>
@@ -83,14 +87,11 @@ const Home = ({ navigation }) => {
                     />
                     <Text style={styles.iconDescription}>Quiz</Text>
                 </TouchableOpacity>
-            </View>
-            
+            </View>           
         </View>
         
 
-        /*<TouchableOpacity onPress={() => Logout()} >
-            <Text>Logout</Text>
-        </TouchableOpacity>*/
+       
     )
 }
 

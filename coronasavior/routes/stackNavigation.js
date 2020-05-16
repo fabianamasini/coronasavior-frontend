@@ -27,7 +27,8 @@ function stackNav() {
         component={Home}
         options={{
             headerShown: true,
-            headerLeft: () => null
+            headerLeft: () => null,
+            gestureEnabled: false
         }}
     />
     <Stack.Screen
@@ -35,7 +36,8 @@ function stackNav() {
         component={Login}
         options={{
             headerShown: true,
-            headerLeft: () => null
+            headerLeft: () => null,
+            gestureEnabled: false
         }}
     />
     <Stack.Screen
@@ -43,7 +45,8 @@ function stackNav() {
         component={SignUp}
         options={{
             headerShown: true,
-            headerLeft: () => null
+            headerLeft: () => null,
+            gestureEnabled: false
         }}
     />
     <Stack.Screen
@@ -51,7 +54,8 @@ function stackNav() {
         component={Profile}
         options={{
             headerShown: true,
-            headerLeft: () => null
+            headerLeft: () => null,
+            gestureEnabled: false
         }}
     />
   </Stack.Navigator>
