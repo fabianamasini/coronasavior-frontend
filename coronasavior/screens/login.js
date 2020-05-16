@@ -9,7 +9,6 @@ const Login = ({ navigation }) => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
 
     async function PerformRequest(){
         try{

@@ -35,6 +35,11 @@ const FloatingLabelInput = (props) => {
               onChangeText={props.action}
               onChange={() => setError('')}
               secureTextEntry={props.security ? props.security : false}
+              blurOnSubmit={false}
+              onSubmitEditing={() => props.nextField && props.nextField.focus()}
+              ref={props.setInputRef}
+              //onSubmitEditing={() => {props.nextTextInput.focus()}}
+              //ref={(input) => {props.nextTextInput = input}}
           />
       </View>
     )
