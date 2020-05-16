@@ -27,7 +27,8 @@ function stackNav() {
         component={Home}
         options={{
             headerShown: true,
-            headerLeft: () => null
+            headerLeft: () => null,
+            gestureEnabled: false
         }}
     />
     <Stack.Screen
