@@ -60,6 +60,10 @@ const Home = ({ navigation }) => {
                     </View>
                     <Text style={styles.iconCredits}>Icons by Freepik and iconixar on www.flaticon.com</Text>
                 </View>
+                <TouchableOpacity onPress={() => Logout()} 
+                    style={styles.button}>
+                    <Text style={styles.whiteText}>Logout</Text>
+                </TouchableOpacity>
             </ScrollView>
             <View style={styles.navbar}>
                 <TouchableOpacity style={styles.navbarIcons}>
@@ -83,12 +87,7 @@ const Home = ({ navigation }) => {
                     />
                     <Text style={styles.iconDescription}>Quiz</Text>
                 </TouchableOpacity>
-            </View>
-
-            <TouchableOpacity onPress={() => Logout()} >
-            <Text>Logout</Text>
-        </TouchableOpacity>
-            
+            </View>           
         </View>
         
 
