@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { Alert, AsyncStorage,  View, TextInput, StyleSheet, TouchableOpacity, Text, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
+import React, { useState, /*createRef*/ } from 'react';
+import { Alert, AsyncStorage,  View, TouchableOpacity, Text, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
 import { registerUser } from '../services/users';
 import { styles } from '../utils/style.js';
 import FloatingLabelInput from '../components/FloatingLabelInput';
-//import FloatLabelTextInput from 'react-native-floating-label-text-input'
 
 const SignUp = ({navigation}) => {
 
@@ -13,25 +12,43 @@ const SignUp = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [error, setError] = useState("");
+    const [error, setError] = useState({
+      username: '',
+      firstName: '',
+      lastName: '',
+      confirmPassword: '',
+      email: ''
+    });
+
+    // const usernameInput = createRef()
+    // const firstNameInput = createRef()
+
+    var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     async function PerformRequest() {
-        try {
-            if (password != confirmPassword){
-                Alert.alert("Passwords do not match!");
+        if(error.confirmPassword.length || error.email.length) {
+            Alert.alert("Please fill the fields correctly");
+        } else {
+            try {
+                await registerUser(username, firstName, lastName, email, password);
+                Alert.alert("Successfully created user");
+                navigation.navigate("Login");
+                setFirstName('')
+                setLastName('')
+                setEmail('')
+                setUsername('')
+                setPassword('')
+                setConfirmPassword('')
+            } catch(error) {
+                if (error.response.status === 400){
+                    Alert.alert('Fill all fields to complete you registry'); 
+                }
+                else{
+                    Alert.alert("Unespected error");
+                }
+                console.log("erro: ", error);
+                console.log("error-detail", error.response);
             }
-            await registerUser(username, firstName, lastName, email, password);
-            Alert.alert("Successfully created user");
-            navigation.navigate("Login");
-        } catch(error) {
-            if (error.response.status === 400){
-                Alert.alert('Fill all fields to complete you registry'); 
-            }
-            else{
-                Alert.alert("Unespected error");
-            }
-            console.log("erro: ", error);
-            console.log("error-detail", error.response);
         }
     }
 
@@ -43,25 +60,39 @@ const SignUp = ({navigation}) => {
                         label="Username"
                         action={(username) => setUsername(username)}
                         value={username}
+                        // ref={usernameInput}
+                        // onSubmitEditing={() => firstNameInput && firstNameInput.focus()}
                     />
+                    <Text style={styles.errorText}>{error.username}</Text>
 
                     <FloatingLabelInput 
                         label="First name"
                         action={(firstName) => setFirstName(firstName)}
                         value={firstName}
+                        // ref={firstNameInput}
                     />
+                    <Text style={styles.errorText}>{error.firstName}</Text>
                     
                     <FloatingLabelInput 
                         label="Last Name"
                         action={(lastName) => setLastName(lastName)}
                         value={lastName}
                     />
+                    <Text style={styles.errorText}>{error.lastName}</Text>
 
                     <FloatingLabelInput 
                         label="E-mail"
-                        action={(email) => setEmail(email)}
+                        action={(email) => {
+                          if(!emailRegex.test(email)) {
+                            setError({email: 'Please enter a valid email.'})
+                          } else {
+                            setError({email: ''})
+                            setEmail(email)
+                          }
+                        }}
                         value={email}
                     />
+                    <Text style={styles.errorText}>{error.email}</Text>
 
                     <FloatingLabelInput 
                         label="Password"
@@ -69,17 +100,21 @@ const SignUp = ({navigation}) => {
                         value={password}
                         security={true}
                     />
+                    <Text style={styles.errorText}>{error.password}</Text>
 
                     <FloatingLabelInput 
                         label="Confirm Password"
-                        action={(confirmPassword) => setConfirmPassword(confirmPassword, () => {
-                            if(confirmPassword != password) {
-                                Alert.alert("Password should match.");
-                            }
-                        })}
+                        action={(confirmPassword) => {
+                          if(confirmPassword !== password) {
+                            setError({confirmPassword: 'Password does not match.'})
+                          } else {
+                            setError({confirmPassword: ''})
+                            setConfirmPassword(confirmPassword)}
+                          }}
                         value={confirmPassword}
                         security={true}
-                    />                    
+                    />     
+                    <Text style={styles.errorText}></Text>               
                     
                     <View style={styles.container}>
                         <TouchableOpacity style={styles.button} onPress={() => PerformRequest()}>

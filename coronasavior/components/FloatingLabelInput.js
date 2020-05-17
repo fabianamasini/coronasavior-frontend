@@ -5,7 +5,6 @@ import { styles } from '../utils/style.js'
 
 const FloatingLabelInput = (props) => {
     const [isFocused, setIsFocused] = useState(false)
-    const [error, setError] = useState("")
   
     const handleFocus = () => {
         setIsFocused(true)
@@ -33,16 +32,9 @@ const FloatingLabelInput = (props) => {
               onFocus={handleFocus}
               onBlur={handleBlur}
               onChangeText={props.action}
-              onChange={() => setError('')}
               secureTextEntry={props.security ? props.security : false}
               blurOnSubmit={false}
               accessibilityLabel={props.accessibility}
-              onSubmitEditing={props.submitAction}
-              ref={props.referenceAction}
-              //onSubmitEditing={() => props.nextField && props.nextField.focus()}
-              //ref={props.setInputRef}
-              //onSubmitEditing={() => {props.nextTextInput.focus()}}
-              //ref={(input) => {props.nextTextInput = input}}
           />
       </View>
     )

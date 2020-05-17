@@ -18,6 +18,7 @@ const Login = ({ navigation }) => {
             await AsyncStorage.setItem("refresh", response.data.refresh);
             
             console.info("Logged with success!");
+            
         }catch(error){
             if (!(error && error.response)) {
                 return;
