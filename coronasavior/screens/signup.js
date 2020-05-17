@@ -23,7 +23,6 @@ const SignUp = ({navigation}) => {
     var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     async function PerformRequest() {
-      // console.log(error)
         if(error.confirmPassword.length || error.email.length) {
             Alert.alert("Please fill the fields correctly");
         } else {

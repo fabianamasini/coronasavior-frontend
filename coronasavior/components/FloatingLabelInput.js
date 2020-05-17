@@ -21,9 +21,7 @@ const FloatingLabelInput = forwardRef((props, ref) => {
           color: isFocused || props.value.length > 0  ?  '#000':'#aaa' ,
       }
   })
-  
-  //console.log(props.nextRef)
-    
+      
     return (
       <View style={{ paddingTop: 20, paddingBottom: 20 }}>
           <Text style={componentStyles.labelStyle}>{props.label}</Text>
