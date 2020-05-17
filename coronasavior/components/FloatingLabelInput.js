@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { StyleSheet, View, TextInput, Text } from 'react-native'
 
-import { styles } from '../utils/style.js'
-
-const FloatingLabelInput = (props) => {
+const FloatingLabelInput = forwardRef((props, ref) => {
     const [isFocused, setIsFocused] = useState(false)
   
     const handleFocus = () => {
@@ -23,6 +21,8 @@ const FloatingLabelInput = (props) => {
           color: isFocused || props.value.length > 0  ?  '#000':'#aaa' ,
       }
   })
+  
+  //console.log(props.nextRef)
     
     return (
       <View style={{ paddingTop: 20, paddingBottom: 20 }}>
@@ -35,9 +35,11 @@ const FloatingLabelInput = (props) => {
               secureTextEntry={props.security ? props.security : false}
               blurOnSubmit={false}
               accessibilityLabel={props.accessibility}
+              ref={ref}
+              onSubmitEditing={props.onSubmitEditing}
           />
       </View>
     )
-}
+})
 
 export default FloatingLabelInput;

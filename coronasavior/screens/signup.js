@@ -1,5 +1,5 @@
-import React, { useState, /*createRef*/ } from 'react';
-import { Alert, AsyncStorage,  View, TouchableOpacity, Text, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { Alert, AsyncStorage,  View, TouchableOpacity, Text, TouchableWithoutFeedback, Keyboard, ScrollView, TextInput } from 'react-native';
 import { registerUser } from '../services/users';
 import { styles } from '../utils/style.js';
 import FloatingLabelInput from '../components/FloatingLabelInput';
@@ -20,12 +20,10 @@ const SignUp = ({navigation}) => {
       email: ''
     });
 
-    // const usernameInput = createRef()
-    // const firstNameInput = createRef()
-
     var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     async function PerformRequest() {
+      // console.log(error)
         if(error.confirmPassword.length || error.email.length) {
             Alert.alert("Please fill the fields correctly");
         } else {
@@ -60,23 +58,26 @@ const SignUp = ({navigation}) => {
                         label="Username"
                         action={(username) => setUsername(username)}
                         value={username}
-                        // ref={usernameInput}
-                        // onSubmitEditing={() => firstNameInput && firstNameInput.focus()}
+                        ref={(ref) => {this.usernameInput = ref}}
+                        onSubmitEditing={() => this.firstNameInput.focus()}
                     />
                     <Text style={styles.errorText}>{error.username}</Text>
-
+                    
                     <FloatingLabelInput 
                         label="First name"
                         action={(firstName) => setFirstName(firstName)}
                         value={firstName}
-                        // ref={firstNameInput}
+                        ref={(ref) => {this.firstNameInput = ref}}
+                        onSubmitEditing={() => this.lastNameInput.focus()}
                     />
                     <Text style={styles.errorText}>{error.firstName}</Text>
-                    
+      
                     <FloatingLabelInput 
                         label="Last Name"
                         action={(lastName) => setLastName(lastName)}
                         value={lastName}
+                        ref={(ref) => {this.lastNameInput = ref}}
+                        onSubmitEditing={() => this.emailInput.focus()}
                     />
                     <Text style={styles.errorText}>{error.lastName}</Text>
 
@@ -84,13 +85,15 @@ const SignUp = ({navigation}) => {
                         label="E-mail"
                         action={(email) => {
                           if(!emailRegex.test(email)) {
-                            setError({email: 'Please enter a valid email.'})
+                            setError(Object.assign(error, {email: 'Please enter a valid email.'}))
                           } else {
-                            setError({email: ''})
-                            setEmail(email)
+                            setError(Object.assign(error, {email: ''}))
                           }
+                          setEmail(email)
                         }}
                         value={email}
+                        ref={(ref) => {this.emailInput = ref}}
+                        onSubmitEditing={() => this.passwordInput.focus()}
                     />
                     <Text style={styles.errorText}>{error.email}</Text>
 
@@ -99,6 +102,8 @@ const SignUp = ({navigation}) => {
                         action={(password) => setPassword(password)}
                         value={password}
                         security={true}
+                        ref={(ref) => {this.passwordInput = ref}}
+                        onSubmitEditing={() => this.confirmPasswordInput.focus()}
                     />
                     <Text style={styles.errorText}>{error.password}</Text>
 
@@ -106,15 +111,18 @@ const SignUp = ({navigation}) => {
                         label="Confirm Password"
                         action={(confirmPassword) => {
                           if(confirmPassword !== password) {
-                            setError({confirmPassword: 'Password does not match.'})
+                            setError(Object.assign(error, {confirmPassword: 'Password does not match.'}))
                           } else {
-                            setError({confirmPassword: ''})
-                            setConfirmPassword(confirmPassword)}
-                          }}
+                            setError(Object.assign(error, {confirmPassword: ''}))
+                          }
+                          setConfirmPassword(confirmPassword)
+                        }}
                         value={confirmPassword}
                         security={true}
+                        ref={(ref) => {this.confirmPasswordInput = ref}}
+                        onSubmitEditing={() => PerformRequest()}
                     />     
-                    <Text style={styles.errorText}></Text>               
+                    <Text style={styles.errorText}>{error.confirmPassword}</Text>               
                     
                     <View style={styles.container}>
                         <TouchableOpacity style={styles.button} onPress={() => PerformRequest()}>
