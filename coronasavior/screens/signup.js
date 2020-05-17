@@ -23,7 +23,10 @@ const SignUp = ({navigation}) => {
     var emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
     async function PerformRequest() {
-        if(error.confirmPassword.length || error.email.length) {
+        if(password != confirmPassword){
+            Alert.alert("Passwords do no match");
+        }
+        else if(error.confirmPassword.length || error.email.length) {
             Alert.alert("Please fill the fields correctly");
         } else {
             try {
@@ -37,8 +40,11 @@ const SignUp = ({navigation}) => {
                 setPassword('')
                 setConfirmPassword('')
             } catch(error) {
-                if (error.response.status === 400){
-                    Alert.alert('Fill all fields to complete you registry'); 
+                if (error.response.status === 400 && error.response.data["username"][0] === "A user with that username already exists."){
+                    Alert.alert("This username is already taken");
+                }
+                else if(error.response.status === 400){
+                    Alert.alert("Fill all the fields to create a user!")
                 }
                 else{
                     Alert.alert("Unespected error");
