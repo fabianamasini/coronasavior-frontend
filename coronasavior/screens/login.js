@@ -18,7 +18,8 @@ const Login = ({ navigation }) => {
             await AsyncStorage.setItem("refresh", response.data.refresh);
             
             console.info("Logged with success!");
-        }catch(error){
+            
+        } catch(error){
             if (!(error && error.response)) {
                 return;
             }
@@ -31,13 +32,13 @@ const Login = ({ navigation }) => {
             return;
         }
         try{
-            const response = await getProfile();
-            if(response.data.count == 0){
-                navigation.navigate("Profile");
-            }
-            else{
-                navigation.navigate("Home");
-            }
+          const response = await getProfile();
+          if(response.data.count == 0){
+              navigation.navigate("Profile");
+          }
+          else{
+              navigation.navigate("Home");
+          }
         }catch (error) {
             console.log(error.response.request);
         }
@@ -51,6 +52,8 @@ const Login = ({ navigation }) => {
                     action={(username) => setUsername(username)}
                     value={username}
                     accessibility="Username field"
+                    ref={(ref) => {this.usernameInput = ref}}
+                    onSubmitEditing={() => this.passwordInput.focus()}
                 />
                 <FloatingLabelInput
                     label='Password'
@@ -58,6 +61,8 @@ const Login = ({ navigation }) => {
                     value={password}
                     security={true}
                     accessibility="Password field"
+                    ref={(ref) => {this.passwordInput = ref}}
+                    onSubmitEditing={() => PerformRequest()}
                 />
 
                 <TouchableOpacity style={styles.button}

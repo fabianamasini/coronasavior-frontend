@@ -33,6 +33,9 @@ export const styles = StyleSheet.create({
   linkText: {
       color: darkGreen,
   },
+  errorText: {
+      color: 'red'
+  },
   h1: {
     color: mediumGreen,
     fontSize: 30,
