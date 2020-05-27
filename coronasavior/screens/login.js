@@ -4,12 +4,12 @@ import { getAuthorizationToken } from '../services/auth';
 import { getProfile } from '../services/profile';
 import { styles } from '../utils/style';
 import FloatingLabelInput from '../components/FloatingLabelInput';
+import Logo from '../components/Logo'
 
 const Login = ({ navigation }) => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
 
     async function PerformRequest(){
         try{
@@ -19,7 +19,8 @@ const Login = ({ navigation }) => {
             await AsyncStorage.setItem("refresh", response.data.refresh);
             
             console.info("Logged with success!");
-        }catch(error){
+            
+        } catch(error){
             if (!(error && error.response)) {
                 return;
             }
@@ -32,13 +33,13 @@ const Login = ({ navigation }) => {
             return;
         }
         try{
-            const response = await getProfile();
-            if(response.data.count == 0){
-                navigation.navigate("Profile");
-            }
-            else{
-                navigation.navigate("Home");
-            }
+          const response = await getProfile();
+          if(response.data.count == 0){
+              navigation.navigate("Profile");
+          }
+          else{
+              navigation.navigate("Home");
+          }
         }catch (error) {
             console.log(error.response.request);
         }
@@ -47,24 +48,32 @@ const Login = ({ navigation }) => {
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.container}>
+                <Logo/>
                 <FloatingLabelInput
                     label='Username'
                     action={(username) => setUsername(username)}
                     value={username}
+                    accessibility="Username field"
+                    ref={(ref) => {this.usernameInput = ref}}
+                    onSubmitEditing={() => this.passwordInput.focus()}
                 />
                 <FloatingLabelInput
                     label='Password'
                     action={(password) => setPassword(password)}
                     value={password}
                     security={true}
+                    accessibility="Password field"
+                    ref={(ref) => {this.passwordInput = ref}}
+                    onSubmitEditing={() => PerformRequest()}
                 />
+
                 <TouchableOpacity style={styles.button}
                 onPress={() => PerformRequest()}>
                     <Text style={styles.whiteText}>Login</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-                    <Text style={styles.linkText}>Doesn't have an account? Sign up here</Text>
+                    <Text style={styles.linkText}>Don't have an account? Sign up here</Text>
                 </TouchableOpacity>
             </View>
         </TouchableWithoutFeedback>

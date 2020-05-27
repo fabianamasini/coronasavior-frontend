@@ -15,8 +15,9 @@ const Quiz = ({navigation}) => {
         readQuestions();
     }, [])
 
-    function goToNextScreen() {
+    function goToNextScreen(item) {
         Alert.alert("foi");
+        navigation.navigate('QuizDetails', {question: item})
     }
 
     return (
@@ -27,7 +28,7 @@ const Quiz = ({navigation}) => {
             renderItem={({item}) => {
                 return(
                     <TouchableOpacity 
-                        onPress={() => goToNextScreen()} 
+                        onPress={() => goToNextScreen(item)} 
                         style={styles.questionTitleContainer}>
                          <Text style={styles.questionTitle}>{item.title}</Text>
                     </TouchableOpacity>

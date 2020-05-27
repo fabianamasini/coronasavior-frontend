@@ -33,6 +33,9 @@ export const styles = StyleSheet.create({
   linkText: {
       color: darkGreen,
   },
+  errorText: {
+      color: 'red'
+  },
   h1: {
     color: mediumGreen,
     fontSize: 30,
@@ -97,6 +100,15 @@ export const styles = StyleSheet.create({
     padding: 30,
     borderBottomWidth: 1,
     borderBottomColor: 'black'
+  },
+  answer:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: lightGreen,
+    width:250,
+    height:50,
+    borderRadius:15,
+    marginBottom: 15
   }
 })
 

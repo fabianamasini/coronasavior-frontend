@@ -8,6 +8,7 @@ import SignUp from '../screens/signup';
 import Profile from '../screens/profile';
 import Home from '../screens/home';
 import Quiz from '../screens/quiz';
+import QuizDetails from '../screens/quizDetails'
 
 const Stack = createStackNavigator()
 
@@ -28,7 +29,8 @@ function stackNav() {
         component={Home}
         options={{
             headerShown: true,
-            headerLeft: () => null
+            headerLeft: () => null,
+            gestureEnabled: false
         }}
     />
     <Stack.Screen
@@ -36,7 +38,8 @@ function stackNav() {
         component={Login}
         options={{
             headerShown: true,
-            headerLeft: () => null
+            headerLeft: () => null,
+            gestureEnabled: false
         }}
     />
     <Stack.Screen
@@ -44,7 +47,8 @@ function stackNav() {
         component={SignUp}
         options={{
             headerShown: true,
-            headerLeft: () => null
+            headerLeft: () => null,
+            gestureEnabled: false
         }}
     />
     <Stack.Screen
@@ -52,12 +56,21 @@ function stackNav() {
         component={Profile}
         options={{
             headerShown: true,
-            headerLeft: () => null
+            headerLeft: () => null,
+            gestureEnabled: false
         }}
     />
     <Stack.Screen
         name="Quiz"
         component={Quiz}
+        options={{
+            headerShown: true,
+            headerLeft: () => null
+        }}
+    />
+    <Stack.Screen
+        name="QuizDetails"
+        component={QuizDetails}
         options={{
             headerShown: true,
             headerLeft: () => null
