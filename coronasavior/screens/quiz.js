@@ -16,7 +16,6 @@ const Quiz = ({navigation}) => {
     }, [])
 
     function goToNextScreen(item) {
-        Alert.alert("foi");
         navigation.navigate('QuizDetails', {question: item})
     }
 
