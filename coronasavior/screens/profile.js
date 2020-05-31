@@ -26,7 +26,7 @@ const Profile = ({ navigation }) => {
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
+            <View style={styles.container}>
                 <FloatingLabelInput 
                     label="Address"
                     action={(address) => setAddress(address)}

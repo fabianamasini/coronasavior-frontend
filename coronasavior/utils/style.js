@@ -92,5 +92,23 @@ export const styles = StyleSheet.create({
   iconDescription: {
     fontSize: 10,
     color: 'white'
+  },
+  questionTitle: {
+    fontSize: 20
+  },
+  questionTitleContainer: {
+    padding: 30,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black'
+  },
+  answer:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: lightGreen,
+    width:250,
+    height:50,
+    borderRadius:15,
+    marginBottom: 15
   }
 })
+
