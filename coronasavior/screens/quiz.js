@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Alert, FlatList, TouchableOpacity, Text, ScrollView } from 'react-native';
+import { View, FlatList, TouchableOpacity, Text } from 'react-native';
 import { styles } from '../utils/style.js';
 import { getQuestions } from '../services/questions.js'
 
