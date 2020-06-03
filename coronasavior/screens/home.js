@@ -65,14 +65,18 @@ const Home = ({ navigation }) => {
                     <Text style={styles.whiteText}>Logout</Text>
                 </TouchableOpacity>
             </ScrollView>
+
             <View style={styles.navbar}>
-                <TouchableOpacity style={styles.navbarIcons}>
+
+                <TouchableOpacity style={styles.navbarIcons}
+                onPress={() => navigation.navigate("Ranking")}>
                     <Image
                         style={styles.icon}
                         source={require('../assets/medal.png')}
                     />
                     <Text style={styles.iconDescription}>Ranking</Text>
                 </TouchableOpacity>
+
                 <TouchableOpacity style={styles.navbarIcons}>
                     <Image
                         style={styles.icon}
@@ -80,6 +84,7 @@ const Home = ({ navigation }) => {
                     />
                     <Text style={styles.iconDescription}>Home</Text>
                 </TouchableOpacity>
+
                 <TouchableOpacity style={styles.navbarIcons}
                 onPress={() => navigation.navigate("Quiz")}>
                     <Image
@@ -88,6 +93,7 @@ const Home = ({ navigation }) => {
                     />
                     <Text style={styles.iconDescription}>Quiz</Text>
                 </TouchableOpacity>
+                
             </View>           
         </View>
         
