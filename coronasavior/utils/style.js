@@ -92,5 +92,44 @@ export const styles = StyleSheet.create({
   iconDescription: {
     fontSize: 10,
     color: 'white'
+  },
+  questionTitle: {
+    fontSize: 20
+  },
+  questionTitleContainer: {
+    padding: 30,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black'
+  },
+  answer:{
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: lightGreen,
+    width:250,
+    height:50,
+    borderRadius:15,
+    marginBottom: 15
+  },
+  rankingData: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: lightGreen,
+    marginLeft: 10
+  },
+  rankingLabel: {
+    fontSize: 15,
+    color: mediumGreen,
+    marginTop: 3
+  },
+  rankingDataContainer: {
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black'
+  },
+  rankingContainer: {
+    flexDirection: 'row',
+    padding: 5,
+    justifyContent: 'flex-start'
   }
 })
+

@@ -4,6 +4,7 @@ import { getAuthorizationToken } from '../services/auth';
 import { getProfile } from '../services/profile';
 import { styles } from '../utils/style';
 import FloatingLabelInput from '../components/FloatingLabelInput';
+import Logo from '../components/Logo'
 
 const Login = ({ navigation }) => {
 
@@ -47,6 +48,7 @@ const Login = ({ navigation }) => {
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={styles.container}>
+                <Logo/>
                 <FloatingLabelInput
                     label='Username'
                     action={(username) => setUsername(username)}
