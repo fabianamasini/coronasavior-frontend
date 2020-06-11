@@ -16,6 +16,8 @@ const QuizDetails = ({route, navigation}) =>{
           
           if(answer.length > 0) Alert.alert('Resposta correta')
           else Alert.alert('Resposta incorreta')
+          navigation.navigate("Home");
+          navigation.navigate("Quiz");
         } catch(e) {
           console.log('second error: ', e)
         }
